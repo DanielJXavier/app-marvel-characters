@@ -1,9 +1,7 @@
 import React from 'react'
 
 const App = () => (
-  <div>
-
-  </div>
+  <h1>Marvel</h1>
 )
 
 export default App
