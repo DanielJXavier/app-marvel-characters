@@ -1,7 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-const App = () => (
-  <h1>Marvel</h1>
-)
+import { fetchCharacters } from '../actions'
 
-export default App
+export class App extends Component {
+  componentDidMount() {
+    this.props.fetchCharacters()
+  }
+
+  render() {
+    if (this.props.isFetching) {
+      return <span>Loading...</span>
+    }
+
+    if (this.props.error) {
+      return <span>Erro!</span>
+    }
+
+    return <span>Characters: {JSON.stringify(this.props.characters)}</span>
+  }
+}
+
+const mapStateToProps = state => ({
+  isFetching: state.isFetching,
+  error: state.error,
+  characters: state.characters
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchCharacters: () => dispatch(fetchCharacters())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
