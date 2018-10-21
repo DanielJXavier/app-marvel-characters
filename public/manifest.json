@@ -1,6 +1,6 @@
 {
-  "short_name": "APP Marvel Comics",
-  "name": "Marvel Comics API Client",
+  "short_name": "Marvel Characters",
+  "name": "Marvel Characters API Client",
   "icons": [
     {
       "src": "favicon.ico",
