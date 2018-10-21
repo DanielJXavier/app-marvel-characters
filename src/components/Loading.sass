@@ -1,0 +1,36 @@
+// Styles
+.loading
+  position: relative
+  width: 48px
+  height: 48px
+  color: red
+  display: flex
+  align-items: center
+  justify-content: center
+
+  .load
+    position: absolute
+    width: 48px
+    height: 48px
+    border-style: solid
+    border-width: 1px
+    border-color: #f00c18 transparent transparent #f00c18
+    border-radius: 24px
+    animation: load 1s linear 0s infinite
+
+    &.reverse
+      width: 40px
+      height: 40px
+      animation-name: load-reverse
+
+  .icon
+    border-radius: 16px
+
+// Animations
+@keyframes load
+  from { transform: rotate(0) }
+  to { transform: rotate(360deg) }
+
+@keyframes load-reverse
+  from { transform: rotate(0) }
+  to { transform: rotate(-360deg) }
