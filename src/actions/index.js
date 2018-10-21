@@ -11,10 +11,12 @@ export const fetchCharactersError = response => ({
   type: 'FETCH_CHARACTERS_ERROR'
 })
 
-export const fetchCharacters = () => dispatch => {
+export const fetchCharacters = () => (dispatch, getState) => {
   dispatch(fetchCharactersRequest())
 
-  fetch('https://gateway.marvel.com:443/v1/public/characters?apikey=f091c57c041c844850714908b043c831')
+  const { limit, offset } = getState()
+
+  fetch(`https://gateway.marvel.com:443/v1/public/characters?apikey=f091c57c041c844850714908b043c831&limit=${limit}&offset=${offset}`)
     .then(response => response.json())
     .then(response => dispatch(fetchCharactersSuccess(response)))
     .catch(() => dispatch(fetchCharactersError()))
