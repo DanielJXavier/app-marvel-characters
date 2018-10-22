@@ -1,6 +1,7 @@
 const initialState = {
   isFetching: false,
   error: false,
+  filter: '',
   characters: [],
   limit: 40,
   offset: 0,
@@ -29,6 +30,17 @@ export const reducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         error: true,
+        characters: [],
+        offset: 0
+      }
+    case 'UPDATE_FILTER':
+      return {
+        ...state,
+        filter: action.filter
+      }
+    case 'RESET_CHARACTERS':
+      return {
+        ...state,
         characters: [],
         offset: 0
       }

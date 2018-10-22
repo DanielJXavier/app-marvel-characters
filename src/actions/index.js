@@ -26,3 +26,12 @@ export const fetchCharacters = (reset = false) => (dispatch, getState) => {
     .then(({ data }) => dispatch(fetchCharactersSuccess(data)))
     .catch(() => dispatch(fetchCharactersError()))
 }
+
+export const resetCharacters = () => ({
+  type: 'RESET_CHARACTERS'
+})
+
+export const updateFilter = (filter) => ({
+  type: 'UPDATE_FILTER',
+  filter
+})

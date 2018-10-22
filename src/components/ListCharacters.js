@@ -20,6 +20,8 @@ export class Characters extends Component {
 
     if (error) return <p>Ooops! It's impossible to get the characters now!</p>
 
+    if (!characters.length) return <p>Sorry! There is no characters with this name!</p>
+
     return <div className="characters">
       {characters.map((character) => (
         <div className="character" key={character.id}>
