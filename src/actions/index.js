@@ -69,3 +69,8 @@ export const fetchCharacter = (characterId) => (dispatch) => {
     .then((character) => dispatch(fetchCharacterSuccess(character)))
     .catch(() => dispatch(fetchCharacterError()))
 }
+
+export const saveCharacter = (character) => ({
+  type: 'SAVE_CHARACTER',
+  character
+})
