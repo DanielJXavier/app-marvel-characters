@@ -41,7 +41,7 @@ export const resetCharacters = () => ({
 })
 
 // Character
-export const setCharacter = (character) => ({
+export const setCharacter = (character = false) => ({
   type: 'SET_CHARACTER',
   character
 })

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { fetchCharacter } from '../actions'
+import { fetchCharacter, setCharacter } from '../actions'
 
 import Loading from './Loading'
 import Header from './Header'
@@ -14,6 +14,12 @@ class Character extends Component {
     const { fetchCharacter } = this.props
 
     !character && fetchCharacter(match.params.characterId)
+  }
+
+  componentWillUnmount() {
+    const { setCharacter } = this.props
+
+    setCharacter()
   }
 
   render() {
@@ -56,7 +62,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchCharacter: (character) => dispatch(fetchCharacter(character))
+  fetchCharacter: (character) => dispatch(fetchCharacter(character)),
+  setCharacter: () => dispatch(setCharacter())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Character)
