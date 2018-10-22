@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import { setCharacter, saveCharacter } from '../actions'
 
@@ -81,5 +82,9 @@ const mapDispatchToProps = (dispatch) => ({
   setCharacter: () => dispatch(setCharacter()),
   saveCharacter: (character) => dispatch(saveCharacter(character))
 })
+
+EditCharacter.propTypes = {
+  character: PropTypes.object.isRequired
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditCharacter)

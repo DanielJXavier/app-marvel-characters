@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import { updateFilter, fetchCharacters } from '../actions'
 
@@ -41,5 +42,9 @@ const mapDispatchToProps = (dispatch) => ({
   updateFilter: (filter) => dispatch(updateFilter(filter)),
   fetchCharacters: (reset) => dispatch(fetchCharacters(reset))
 })
+
+Header.propTypes = {
+  action: PropTypes.string
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

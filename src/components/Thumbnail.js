@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import './Thumbnail.sass'
 
@@ -9,5 +10,10 @@ const Thumbnail = ({ thumbnail, name }) => (
     alt={`${name} thumbnail`}
   />
 )
+
+Thumbnail.propTypes = {
+  thumbnail: PropTypes.object.isRequired,
+  name: PropTypes.string
+}
 
 export default Thumbnail
