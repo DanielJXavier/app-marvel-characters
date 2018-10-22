@@ -2,8 +2,9 @@ const initialState = {
   isFetching: false,
   error: false,
   characters: [],
-  limit: 16,
-  offset: 0
+  limit: 40,
+  offset: 0,
+  total: 0
 }
 
 export const reducer = (state = initialState, action) => {
@@ -12,25 +13,25 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: true,
-        error: false,
-        characters: []
+        error: false
       }
     case 'FETCH_CHARACTERS_SUCCESS':
       return {
         ...state,
         isFetching: false,
         error: false,
-        characters: action.response,
-        offset: action.response.length
+        characters: [...state.characters, ...action.response.results],
+        offset: state.characters.length + action.response.count,
+        total: action.response.total
       }
-      case 'FETCH_CHARACTERS_ERROR':
-        return {
-          ...state,
-          isFetching: false,
-          error: true,
-          characters: [],
-          offset: 0
-        }
+    case 'FETCH_CHARACTERS_ERROR':
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+        characters: [],
+        offset: 0
+      }
     default:
       return state
   }
