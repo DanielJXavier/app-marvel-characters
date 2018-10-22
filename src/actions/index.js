@@ -1,3 +1,6 @@
+const apiEndpoint = 'https://gateway.marvel.com:443/v1/public/characters'
+const apiKey = 'f091c57c041c844850714908b043c831'
+
 export const fetchCharactersRequest = () => ({
   type: 'FETCH_CHARACTERS_REQUEST'
 })
@@ -16,8 +19,8 @@ export const fetchCharacters = () => (dispatch, getState) => {
 
   const { limit, offset } = getState()
 
-  fetch(`https://gateway.marvel.com:443/v1/public/characters?apikey=f091c57c041c844850714908b043c831&limit=${limit}&offset=${offset}`)
+  fetch(`${apiEndpoint}?apikey=${apiKey}&limit=${limit}&offset=${offset}`)
     .then(response => response.json())
-    .then(({ data }) => dispatch(fetchCharactersSuccess(data.results)))
+    .then(({ data }) => dispatch(fetchCharactersSuccess(data)))
     .catch(() => dispatch(fetchCharactersError()))
 }
