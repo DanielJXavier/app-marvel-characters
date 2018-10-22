@@ -1,34 +1,12 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 
-import { fetchCharacters } from '../actions'
+import ListCharacters from './ListCharacters'
 
-export class App extends Component {
-  componentDidMount() {
-    this.props.fetchCharacters()
-  }
+import './App.sass'
+import search from '../assets/images/search.svg'
 
-  render() {
-    if (this.props.isFetching) {
-      return <span>Loading...</span>
-    }
-
-    if (this.props.error) {
-      return <span>Erro!</span>
-    }
-
-    return <span>Characters: {JSON.stringify(this.props.characters)}</span>
-  }
-}
-
-const mapStateToProps = state => ({
-  isFetching: state.isFetching,
-  error: state.error,
-  characters: state.characters
-})
-
-const mapDispatchToProps = dispatch => ({
-  fetchCharacters: () => dispatch(fetchCharacters())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default () => (
+  <main>
+    <ListCharacters />
+  </main>
+)
