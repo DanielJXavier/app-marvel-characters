@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import reducer from './reducers'
 
 import App from './components/App'
+import Character from './components/Character'
 
 import './index.sass'
 
@@ -19,6 +20,8 @@ render (
   <Provider store={store}>
     <Router>
       <main>
+        <Route exact path="/" component={App} />
+        <Route exact path="/character/:characterId" component={Character} />
       </main>
     </Router>
   </Provider>,

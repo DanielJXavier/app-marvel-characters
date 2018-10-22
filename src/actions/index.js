@@ -40,4 +40,32 @@ export const resetCharacters = () => ({
   type: 'RESET_CHARACTERS'
 })
 
+// Character
+export const setCharacter = (character) => ({
+  type: 'SET_CHARACTER',
+  character
 })
+
+export const fetchCharacterRequest = () => ({
+  type: 'FETCH_CHARACTER_REQUEST'
+})
+
+export const fetchCharacterSuccess = (response) => ({
+  type: 'FETCH_CHARACTER_SUCCESS',
+  response
+})
+
+export const fetchCharacterError = () => ({
+  type: 'FETCH_CHARACTER_ERROR'
+})
+
+export const fetchCharacter = (characterId) => (dispatch) => {
+  dispatch(fetchCharacterRequest())
+
+  fetch(`${apiEndpoint}/${characterId}?apikey=${apiKey}`)
+    .then((response) => response.json())
+    .then(({ data }) => data.results[0])
+    .then(({ id, name, description, thumbnail, series }) => ({ id, name, description, thumbnail, series }))
+    .then((character) => dispatch(fetchCharacterSuccess(character)))
+    .catch(() => dispatch(fetchCharacterError()))
+}

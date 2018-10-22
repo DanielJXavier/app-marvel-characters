@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import { fetchCharacters } from '../actions'
+import { fetchCharacters, setCharacter } from '../actions'
 
 import Loading from './Loading'
 
@@ -10,11 +11,14 @@ import edit from '../assets/images/edit.svg'
 
 class Characters extends Component {
   componentDidMount() {
-    this.props.fetchCharacters()
+    const { characters, fetchCharacters } = this.props
+
+    !characters.length && fetchCharacters()
   }
 
   render() {
-    const { isFetching, error, characters, total, fetchCharacters } = this.props
+    const { isFetching, error, characters, total } = this.props
+    const { fetchCharacters, setCharacter } = this.props
 
     if (isFetching && !characters.length) return <Loading />
 
@@ -22,10 +26,10 @@ class Characters extends Component {
 
     if (!characters.length) return <p>Sorry! There is no characters with this name!</p>
 
-    return (  
+    return (
       <section className="characters">
         {characters.map((character) => (
-          <Link to={`/character/${character.id}`} className="character" key={character.id}>
+          <Link to={`/character/${character.id}`} className="character" key={character.id} onClick={() => setCharacter(character)} >
             <div className="header">
               <p className="title">
                 {character.name}
@@ -34,7 +38,7 @@ class Characters extends Component {
                 <img src={edit} alt="Edit icon" />
               </button>
             </div>
-            <img className="image" src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={`${character.name} thumbnail`} />
+            { character.thumbnail && <img className="image" src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={`${character.name} thumbnail`} /> }
           </Link>
         ))}
         <button className={`load-more ${characters.length >= total ? 'hidden' : ''} ${isFetching ? 'fetching' : ''}`} onClick={() => fetchCharacters()}>Load more</button>
@@ -51,7 +55,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchCharacters: () => dispatch(fetchCharacters())
+  fetchCharacters: () => dispatch(fetchCharacters()),
+  setCharacter: (character) => dispatch(setCharacter(character))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Characters)
