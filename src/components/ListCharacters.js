@@ -44,10 +44,10 @@ class Characters extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isFetching: state.isFetching,
-  error: state.error,
-  characters: state.characters,
-  total: state.total
+  isFetching: state.characters.isFetching,
+  error: state.characters.error,
+  characters: state.characters.characters,
+  total: state.characters.total
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-import { reducer } from './reducers'
+import reducer from './reducers'
 
 import App from './components/App'
 
