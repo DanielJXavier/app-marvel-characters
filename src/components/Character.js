@@ -35,12 +35,14 @@ class Character extends Component {
             <h1 className="name">{name}</h1>
             <p className="description">{description}</p>
           </div>
-          <div className="series">
-            <h2 className="title">Top {name}’s series</h2>
-            { series && series.items && series.items.map((serie, i) => (
-              <p className="serie" key={`serie-${i}`}>{serie.name}</p>
-            ))}
-          </div>
+          { series && series.items && series.items.length > 0 &&
+            <div className="series">
+              <h2 className="title">Top {name}’s series</h2>
+              { series.items.map((serie, i) => (
+                <p className="serie" key={`serie-${i}`}>{serie.name}</p>
+              ))}
+            </div>
+          }
         </section>
       </section>
     )
