@@ -12,7 +12,7 @@ class Header extends Component {
     const { updateFilter, fetchCharacters } = this.props
 
     return (
-      <div className="header">
+      <div className="Header">
         <h1 className="title">Marvel Characters</h1>
         <div className="search">
           <input type="text" placeholder="Search characters by name" value={filter} onChange={(e) => updateFilter(e.target.value)} onKeyDown={(e) => e.keyCode === 13 && fetchCharacters(true)} />

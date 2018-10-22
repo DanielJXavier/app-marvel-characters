@@ -27,7 +27,7 @@ class Character extends Component {
     return (
       <section>
         <Header />
-        <section className="character">
+        <section className="Character">
           <div className="header">
             { thumbnail &&
               <img className="image" src={`${thumbnail.path}.${thumbnail.extension}`} alt={`${name} thumbnail`} />

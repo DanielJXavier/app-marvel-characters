@@ -27,7 +27,7 @@ class Characters extends Component {
     if (!characters.length) return <p>Sorry! There is no characters with this name!</p>
 
     return (
-      <section className="characters">
+      <section className="Characters">
         {characters.map((character) => (
           <Link to={`/character/${character.id}`} className="character" key={character.id} onClick={() => setCharacter(character)} >
             <div className="header">
