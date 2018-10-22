@@ -1,4 +1,5 @@
 import React from 'react'
+
 import './Loading.sass'
 import icon from '../assets/images/marvel.png'
 
