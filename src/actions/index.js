@@ -1,6 +1,14 @@
+// Common
 const apiEndpoint = 'https://gateway.marvel.com:443/v1/public/characters'
 const apiKey = 'f091c57c041c844850714908b043c831'
 
+// Filter
+export const updateFilter = (filter) => ({
+  type: 'UPDATE_FILTER',
+  filter
+})
+
+// Characters
 export const fetchCharactersRequest = () => ({
   type: 'FETCH_CHARACTERS_REQUEST'
 })
@@ -10,7 +18,7 @@ export const fetchCharactersSuccess = (response) => ({
   response
 })
 
-export const fetchCharactersError = (response) => ({
+export const fetchCharactersError = () => ({
   type: 'FETCH_CHARACTERS_ERROR'
 })
 
@@ -19,7 +27,8 @@ export const fetchCharacters = (reset = false) => (dispatch, getState) => {
 
   dispatch(fetchCharactersRequest())
 
-  const { filter, limit, offset } = getState()
+  const { filter } = getState().filter
+  const { limit, offset } = getState().characters
 
   fetch(`${apiEndpoint}?apikey=${apiKey}${filter ? `&nameStartsWith=${filter}` : ''}&limit=${limit}&offset=${offset}`)
     .then((response) => response.json())
@@ -31,7 +40,4 @@ export const resetCharacters = () => ({
   type: 'RESET_CHARACTERS'
 })
 
-export const updateFilter = (filter) => ({
-  type: 'UPDATE_FILTER',
-  filter
 })

@@ -8,12 +8,12 @@ import ListCharacters from './ListCharacters'
 import './App.sass'
 import search from '../assets/images/search.svg'
 
-export class App extends Component {
+class App extends Component {
   render() {
     const { updateFilter, fetchCharacters } = this.props
 
     return (
-      <main>
+      <section>
         <div className="header">
           <h1 className="title">Marvel Characters</h1>
           <div className="search">
@@ -22,7 +22,7 @@ export class App extends Component {
           </div>
         </div>
         <ListCharacters />
-      </main>
+      </section>
     )
   }
 }
