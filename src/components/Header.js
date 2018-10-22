@@ -17,6 +17,7 @@ class Header extends Component {
         <div className="search">
           <input type="text" placeholder="Search characters by name" value={filter} onChange={(e) => updateFilter(e.target.value)} onKeyDown={(e) => e.keyCode === 13 && fetchCharacters(true)} />
           <button><img src={search} alt="Edit icon" onClick={() => fetchCharacters(true)} /></button>
+          {filter && <button className="clear" onClick={() => updateFilter() && fetchCharacters(true)}><span></span><span></span></button>}
         </div>
       </div>
     )

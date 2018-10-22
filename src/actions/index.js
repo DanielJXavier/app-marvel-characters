@@ -3,7 +3,7 @@ const apiEndpoint = 'https://gateway.marvel.com:443/v1/public/characters'
 const apiKey = 'f091c57c041c844850714908b043c831'
 
 // Filter
-export const updateFilter = (filter) => ({
+export const updateFilter = (filter = '') => ({
   type: 'UPDATE_FILTER',
   filter
 })
