@@ -27,7 +27,7 @@ class Characters extends Component {
         {characters.map((character) => (
           <Link to={`/character/${character.id}`} className="character" key={character.id}>
             <div className="header">
-              <p className="text">
+              <p className="title">
                 {character.name}
               </p>
               <button className="button">
