@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { fetchCharacter, setCharacter } from '../actions'
 
 import Loading from './Loading'
+import Thumbnail from './Thumbnail'
 import Header from './Header'
 
 import './Character.sass'
@@ -36,7 +37,7 @@ class Character extends Component {
         <section className="Character">
           <div className="info">
             { thumbnail &&
-              <img className="image" src={`${thumbnail.path}.${thumbnail.extension}`} alt={`${name} thumbnail`} />
+              <Thumbnail thumbnail={thumbnail} name={name} />
             }
             <h1 className="name">{name}</h1>
             <p className="description">{description}</p>

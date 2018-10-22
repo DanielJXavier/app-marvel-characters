@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { fetchCharacters, setCharacter } from '../actions'
 
 import Loading from './Loading'
+import Thumbnail from './Thumbnail'
 import CharacterEdit from './CharacterEdit'
 
 import './ListCharacters.sass'
@@ -57,11 +58,7 @@ class Characters extends Component {
               </button>
             </div>
             { character.thumbnail &&
-              <img
-                className={`image ${character.thumbnail.path.indexOf('image_not_available') !== -1 ? 'left' : ''} ${character.thumbnail.path.indexOf('4c002e0305708') !== -1 ? 'right' : ''}`}
-                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                alt={`${character.name} thumbnail`}
-              />
+              <Thumbnail thumbnail={character.thumbnail} name={character.name} />
             }
           </Link>
         ))}
