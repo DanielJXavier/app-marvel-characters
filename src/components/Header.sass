@@ -1,12 +1,45 @@
 .Header
-  margin: 0 0 10px
-  padding: 20px
+  position: relative
+  margin: 0 0 12px
+  padding: 24px
+  font-size: 24px
   display: flex
-  justify-content: space-between
+  align-items: center
+  justify-content: center
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 1)
 
+  .back
+    position: absolute
+    right: 24px
+    padding: 6px 12px
+    font-size: 20px
+    text-decoration: none
+    background-color: none
+    border: solid 1px #fff
+    border-radius: 24px
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 1)
+    cursor: pointer
+    display: flex
+    align-items: center
+
+    &:hover
+      background-color: #000
+      box-shadow: none
+
+    &::before
+      content: ''
+      width: 8px
+      height: 8px
+      margin: 0 6px 0 0
+      border-style: solid
+      border-width: 2px
+      border-color: #fff transparent transparent #fff
+      border-radius: 3px
+      transform: rotate(-45deg)
+
   .search
-    position: relative
+    position: absolute
+    right: 24px
     border: solid 1px #fff
     border-radius: 24px
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 1)
@@ -15,27 +48,47 @@
     overflow: hidden
 
     input
-      width: 250px
+      width: 300px
       height: 100%
-      padding: 6px 36px 6px 12px
+      padding: 6px 48px 6px 12px
       font-size: 16px
       border: none
       color: #000
 
     button
-      position: absolute
-      right: 5px
-      width: 24px
-      height: 24px
-      padding: 5px
-      background-color: #22262a
-      border: solid 1px #fff
-      border-radius: 12px
-      outline: none
       cursor: pointer
       display: flex
       align-items: center
       justify-content: center
 
-      img
-        width: 100%
+      &.clear
+        position: absolute
+        right: 32px
+        width: 12px
+        height: 12px
+        background: none
+        border: none
+        color: #000
+        transform: rotate(45deg)
+
+        span
+          position: absolute
+          width: 10px
+          height: 2px
+          background: #000
+
+          &:last-child
+            transform: rotate(90deg)
+
+      &.filter
+        position: absolute
+        right: 5px
+        width: 24px
+        height: 24px
+        padding: 5px
+        background-color: #22262a
+        border: solid 1px #fff
+        border-radius: 12px
+
+        img
+          width: 100%

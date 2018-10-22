@@ -22,9 +22,9 @@ class Characters extends Component {
 
     if (isFetching && !characters.length) return <Loading />
 
-    if (error) return <p>Ooops! It's impossible to get the characters now!</p>
+    if (error) return <p className="message">Ooops! It's impossible to get the characters now!</p>
 
-    if (!characters.length) return <p>Sorry! There is no characters with this name!</p>
+    if (!characters.length) return <p className="message">Sorry! There is no characters with this name!</p>
 
     return (
       <section className="Characters">
@@ -38,7 +38,13 @@ class Characters extends Component {
                 <img src={edit} alt="Edit icon" />
               </button>
             </div>
-            { character.thumbnail && <img className="image" src={`${character.thumbnail.path}.${character.thumbnail.extension}`} alt={`${character.name} thumbnail`} /> }
+            { character.thumbnail &&
+              <img
+                className={`image ${character.thumbnail.path.indexOf('image_not_available') !== -1 ? 'left' : ''} ${character.thumbnail.path.indexOf('4c002e0305708') !== -1 ? 'right' : ''}`}
+                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                alt={`${character.name} thumbnail`}
+              />
+            }
           </Link>
         ))}
         <button className={`load-more ${characters.length >= total ? 'hidden' : ''} ${isFetching ? 'fetching' : ''}`} onClick={() => fetchCharacters()}>Load more</button>

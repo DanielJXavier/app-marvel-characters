@@ -22,23 +22,23 @@ class Character extends Component {
 
     if (isFetching && !character) return <Loading />
 
-    if (error) return <p>Ooops! It's impossible to get the character info now!</p>
+    if (error) return <p className="message">Ooops! It's impossible to get the character info now!</p>
 
     return (
       <section>
-        <Header />
+        <Header action="back" />
         <section className="Character">
-          <div className="header">
+          <div className="info">
             { thumbnail &&
               <img className="image" src={`${thumbnail.path}.${thumbnail.extension}`} alt={`${name} thumbnail`} />
             }
-            <h1 className="title">{name}</h1>
+            <h1 className="name">{name}</h1>
             <p className="description">{description}</p>
           </div>
           <div className="series">
-            <h2 className="title">Top 20 {name}’s series</h2>
-            { series && series.items && series.items.map((serie) => (
-              <p className="serie" key={serie.id}>{serie.name}</p>
+            <h2 className="title">Top {name}’s series</h2>
+            { series && series.items && series.items.map((serie, i) => (
+              <p className="serie" key={`serie-${i}`}>{serie.name}</p>
             ))}
           </div>
         </section>
