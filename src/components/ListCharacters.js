@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { fetchCharacters } from '../actions'
 
 import Loading from './Loading'
-import Error from './Error'
 
 import './ListCharacters.sass'
 import edit from '../assets/images/edit.svg'
@@ -19,10 +18,10 @@ export class Characters extends Component {
 
     if (isFetching && !characters.length) return <Loading />
 
-    if (error) return <Error />
+    if (error) return <p>Ooops! It's impossible to get the characters now!</p>
 
     return <div className="characters">
-      {characters.map(character => (
+      {characters.map((character) => (
         <div className="character" key={character.id}>
           <div className="header">
             <p className="text">
@@ -40,14 +39,14 @@ export class Characters extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isFetching: state.isFetching,
   error: state.error,
   characters: state.characters,
   total: state.total
 })
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchCharacters: () => dispatch(fetchCharacters())
 })
 

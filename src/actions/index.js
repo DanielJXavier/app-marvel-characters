@@ -5,22 +5,24 @@ export const fetchCharactersRequest = () => ({
   type: 'FETCH_CHARACTERS_REQUEST'
 })
 
-export const fetchCharactersSuccess = response => ({
+export const fetchCharactersSuccess = (response) => ({
   type: 'FETCH_CHARACTERS_SUCCESS',
   response
 })
 
-export const fetchCharactersError = response => ({
+export const fetchCharactersError = (response) => ({
   type: 'FETCH_CHARACTERS_ERROR'
 })
 
-export const fetchCharacters = () => (dispatch, getState) => {
+export const fetchCharacters = (reset = false) => (dispatch, getState) => {
+  reset && dispatch(resetCharacters())
+
   dispatch(fetchCharactersRequest())
 
-  const { limit, offset } = getState()
+  const { filter, limit, offset } = getState()
 
-  fetch(`${apiEndpoint}?apikey=${apiKey}&limit=${limit}&offset=${offset}`)
-    .then(response => response.json())
+  fetch(`${apiEndpoint}?apikey=${apiKey}${filter ? `&nameStartsWith=${filter}` : ''}&limit=${limit}&offset=${offset}`)
+    .then((response) => response.json())
     .then(({ data }) => dispatch(fetchCharactersSuccess(data)))
     .catch(() => dispatch(fetchCharactersError()))
 }
