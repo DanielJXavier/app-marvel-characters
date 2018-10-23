@@ -24,12 +24,15 @@ export class CharacterEdit extends Component {
     }))
   }
 
+  overflowHandler = () => {
+    document.body.style.overflow = 'visible'
+  }
+
   cancelHandler = (e) => {
     e.preventDefault()
 
     this.props.setCharacter()
-
-    document.body.style.overflow = 'visible'
+    this.overflowHandler()
   }
 
   saveHandler = (e) => {
@@ -43,8 +46,7 @@ export class CharacterEdit extends Component {
 
     saveCharacter(editedCharacter)
     setCharacter()
-
-    document.body.style.overflow = 'visible'
+    this.overflowHandler()
   }
 
   render() {
@@ -57,7 +59,7 @@ export class CharacterEdit extends Component {
           <form className="form">
             <div className="input-container">
               <label className="label">Name:</label>
-              <input className="input" type="text" defaultValue={character.name} onChange={(e) => this.nameHandler(e.target.value)} />
+              <input className="input name" type="text" defaultValue={character.name} onChange={(e) => this.nameHandler(e.target.value)} />
             </div>
             <div className="input-container">
               <label className="label">Description:</label>
