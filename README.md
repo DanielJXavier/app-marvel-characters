@@ -1,16 +1,16 @@
-# app-marvel-comics
-Marvel Comics API Client
+# app-marvel-characters
+Marvel Characters API Client
 
 ## Run instructions
 ```bash
-cd app-marvel-comics
+cd app-marvel-characters
 yarn
 yarn start
 ```
 
 ## Test instructions
 ```bash
-cd app-marvel-comics
+cd app-marvel-characters
 yarn
 yarn test
 ```
