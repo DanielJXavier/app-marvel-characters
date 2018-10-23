@@ -11,7 +11,7 @@ import CharacterEdit from './CharacterEdit'
 import './ListCharacters.sass'
 import edit from '../assets/images/edit.svg'
 
-class Characters extends Component {
+export class ListCharacters extends Component {
   editCharacterHandler = (e) => {
     e.preventDefault()
 
@@ -85,4 +85,4 @@ const mapDispatchToProps = (dispatch) => ({
   setCharacter: (character) => dispatch(setCharacter(character))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Characters)
+export default connect(mapStateToProps, mapDispatchToProps)(ListCharacters)

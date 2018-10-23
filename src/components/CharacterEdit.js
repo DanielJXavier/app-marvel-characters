@@ -6,7 +6,7 @@ import { setCharacter, saveCharacter } from '../actions'
 
 import './CharacterEdit.sass'
 
-class EditCharacter extends Component {
+export class CharacterEdit extends Component {
   state = {
     name: this.props.character.name,
     description: this.props.character.description
@@ -83,8 +83,8 @@ const mapDispatchToProps = (dispatch) => ({
   saveCharacter: (character) => dispatch(saveCharacter(character))
 })
 
-EditCharacter.propTypes = {
+CharacterEdit.propTypes = {
   character: PropTypes.object.isRequired
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditCharacter)
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterEdit)

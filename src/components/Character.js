@@ -9,7 +9,7 @@ import Header from './Header'
 
 import './Character.sass'
 
-class Character extends Component {
+export class Character extends Component {
   componentDidMount() {
     const { character, match } = this.props
     const { fetchCharacter } = this.props
