@@ -62,7 +62,9 @@ class Characters extends Component {
             }
           </Link>
         ))}
-        <button className={`load-more ${characters.length >= total ? 'hidden' : ''} ${isFetching ? 'fetching' : ''}`} onClick={() => fetchCharacters()}>Load more</button>
+        <div className="load-more">
+          <button className={`button ${characters.length >= total ? 'hidden' : ''} ${isFetching ? 'fetching' : ''}`} onClick={() => fetchCharacters()}>Load more</button>
+        </div>
         { editingCharacter && <CharacterEdit character={editingCharacter} /> }
       </section>
     )

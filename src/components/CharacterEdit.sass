@@ -20,11 +20,30 @@
 
     .title
       margin: 12px 0
+      font-size: 24px
+
+      @media (max-width: 1199px)
+        font-size: 22px
+
+      @media (max-width: 991px)
+        font-size: 20px
+
+      @media (max-width: 767px)
+        font-size: 18px
 
     .form
       width: 400px
       display: grid
       grid-row-gap: 12px
+
+      @media (max-width: 1199px)
+        width: 360px
+
+      @media (max-width: 991px)
+        width: 320px
+
+      @media (max-width: 767px)
+        width: 300px
 
       .input-container
         display: grid
@@ -33,12 +52,18 @@
         .label
           font-size: 16px
 
+          @media (max-width: 767px)
+            font-size: 14px
+
         .input
           padding: 6px 12px
           font-size: 14px
           color: #000
           border: none
           border-radius: 6px
+
+          @media (max-width: 767px)
+            font-size: 12px
 
           &.description
             height: 150px
@@ -52,11 +77,15 @@
 
         .button
           padding: 6px 12px
+          font-size: 14px
           background: none
           border: solid 1px #fff
           border-radius: 6px
           box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 1)
           cursor: pointer
+
+          @media (max-width: 767px)
+            font-size: 12px
 
           &:hover
             box-shadow: none
