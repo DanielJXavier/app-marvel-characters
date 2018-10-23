@@ -70,6 +70,7 @@ export const fetchCharacter = (characterId) => (dispatch) => {
     .catch(() => dispatch(fetchCharacterError()))
 }
 
+// savedCharacters
 export const saveCharacter = (character) => ({
   type: 'SAVE_CHARACTER',
   character
